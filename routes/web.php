@@ -29,4 +29,5 @@ Route::middleware([
     })->name('dashboard');
     Route::get('/dbinfo', [DbinfoController::class, 'index']);
     Route::get('/dbinfo/add', [DbinfoController::class, 'create']);
+    Route::post('/dbinfo/store', [DbinfoController::class, 'store']);
 });

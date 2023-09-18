@@ -12,45 +12,60 @@
           <a href="/dbinfo" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Back</a>
         </div>
         <div class="p-4">
-          <form class="w-full max-w-lg">
+          <form class="w-full max-w-lg" method="POST" action="/dbinfo/store">
+            @csrf
             <div class="flex flex-wrap -mx-3 mb-6">
               <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">First Name</label>
-                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" id="grid-db-name" name="grid-db-name" for="grid-db-name">DB Name</label>
+                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white" id="grid-db-name" type="text" placeholder="project-dev">
+                @error('grid-db-name')
+                  <p class="text-red-500 text-xs italic">DB Name required.</p>
+                @enderror
               </div>
               <div class="w-full md:w-1/2 px-3">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">Last Name</label>
-                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Doe">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" id="grid-db-host" name="grid-db-host" for="grid-db-host">DB Host</label>
+                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-db-host" type="text" placeholder="xxx.xxx.xxx.xxx">
+                @error('grid-db-host')
+                  <p class="text-red-500 text-xs italic">DB Host required.</p>
+                @enderror
               </div>
             </div>
             <div class="flex flex-wrap -mx-3 mb-6">
-              <div class="w-full px-3">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">Password</label>
-                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="password" placeholder="******************">
+              <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" id="grid-db-username" name="grid-db-username" for="grid-db-username">DB Username</label>
+                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white" id="grid-db-username" type="text" placeholder="dbuser">
+                @error('grid-db-username')
+                  <p class="text-red-500 text-xs italic">DB Username required.</p>
+                @enderror
+              </div>
+              <div class="w-full md:w-1/2 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" id="grid-db-password" name="grid-db-password" for="grid-db-password">DB Password</label>
+                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-db-password" type="text" placeholder="password@1">
+                @error('grid-db-password')
+                  <p class="text-red-500 text-xs italic">DB Password required.</p>
+                @enderror
               </div>
             </div>
             <div class="flex flex-wrap -mx-3 mb-2">
-              <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">City</label>
-                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="text" placeholder="Albuquerque">
+              <div class="w-full md:w-1/2 px-3">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" id="grid-db-port" name="grid-db-port" for="grid-db-port">DB Port</label>
+                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-db-port" type="text" placeholder="3306">
+                @error('grid-db-port')
+                  <p class="text-red-500 text-xs italic">DB Port required.</p>
+                @enderror
               </div>
-              <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">State</label>
+              <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" id="grid-db-cluster" name="grid-db-cluster" for="grid-db-cluster">Cluster</label>
                 <div class="relative">
-                  <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                  <select class="block appearance-none w-full bg-gray-200 border border-gray-500 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-db-cluster">
                     <option>Dev</option>
                     <option>Stage</option>
                     <option>Production</option>
                   </select>
                 </div>
               </div>
-              <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-zip">
-                  Zip
-                </label>
-                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip" type="text" placeholder="90210">
-              </div>
             </div>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
           </form>
         </div>
       </div>

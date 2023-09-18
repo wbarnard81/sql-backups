@@ -28,7 +28,26 @@ class DbinfoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->input('grid-db-name'));
+        $request->validate([
+            'grid-db-name' => 'required|min:6',
+            'grid-db-host' => 'required',
+            'grid-db-username' => 'required|min:6',
+            'grid-db-password' => 'required|min:6',
+            'grid-db-port' => 'required|min:4',
+            'grid-db-cluster' => 'required',
+        ]);
+
+        $user = new Dbinfo;
+        $user->name = $request->input('name');
+        $user->email = trim($request->input('email'));
+        $user->password = bcrypt($request->input('password'));
+        $user->save();
+
+        return redirect()->back()->with([
+            'message' => 'User added successfully!', 
+            'status' => 'success'
+        ]);
     }
 
     /**
