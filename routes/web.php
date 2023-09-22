@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DbinfoController;
+use App\Models\Dbinfo;
+use Illuminate\Http\Request;
 
 
 /*
@@ -25,7 +27,15 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        $dbs = Dbinfo::all();
+        return view('dashboard', ['dbs' => $dbs]);
     })->name('dashboard');
+
+    Route::get('/backups/{id}', function (Request $request) {
+        $dbid = $request->id;
+        $dbs = Dbinfo::find($dbid);
+        return view('backups', ['dbs' => $dbs]);
+    })->name('backups');
+
     Route::resource('dbinfo', DbinfoController::class);
 });
