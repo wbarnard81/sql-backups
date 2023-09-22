@@ -59,7 +59,7 @@ class DbinfoController extends Controller
      */
     public function edit(Dbinfo $dbinfo)
     {
-        //
+        return view('Dbinfo.edit', compact('dbinfo'));
     }
 
     /**
@@ -67,7 +67,18 @@ class DbinfoController extends Controller
      */
     public function update(Request $request, Dbinfo $dbinfo)
     {
-        //
+        $request->validate([
+            'db_name' => 'required|min:6',
+            'db_host' => 'required|ipv4',
+            'db_username' => 'required|min:6',
+            'db_password' => 'required|min:6',
+            'db_port' => 'required|min:4|max:5',
+            'db_cluster' => 'required',
+        ]);
+
+        $dbinfo->update($request->all());
+  
+        return redirect()->route('dbinfo.index')->with('success','DB Info updated successfully');
     }
 
     /**
@@ -75,6 +86,8 @@ class DbinfoController extends Controller
      */
     public function destroy(Dbinfo $dbinfo)
     {
-        //
+        $dbinfo->delete();
+  
+        return redirect()->route('dbinfo.index')->with('success','DB Info deleted successfully');
     }
 }
