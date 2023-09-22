@@ -12,7 +12,8 @@ class DbinfoController extends Controller
      */
     public function index()
     {
-        return view('Dbinfo.index');
+        $dbs = Dbinfo::all();
+        return view('Dbinfo.index', ['dbs'=> $dbs]);
     }
 
     /**
@@ -28,24 +29,19 @@ class DbinfoController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->input('grid-db-name'));
         $request->validate([
-            'grid-db-name' => 'required|min:6',
-            'grid-db-host' => 'required',
-            'grid-db-username' => 'required|min:6',
-            'grid-db-password' => 'required|min:6',
-            'grid-db-port' => 'required|min:4',
-            'grid-db-cluster' => 'required',
+            'db_name' => 'required|min:6',
+            'db_host' => 'required|ipv4',
+            'db_username' => 'required|min:6',
+            'db_password' => 'required|min:6',
+            'db_port' => 'required|min:4|max:5',
+            'db_cluster' => 'required',
         ]);
-
-        $user = new Dbinfo;
-        $user->name = $request->input('name');
-        $user->email = trim($request->input('email'));
-        $user->password = bcrypt($request->input('password'));
-        $user->save();
+        
+        Dbinfo::create($request->all());
 
         return redirect()->back()->with([
-            'message' => 'User added successfully!', 
+            'message' => 'DB Info added successfully!', 
             'status' => 'success'
         ]);
     }
