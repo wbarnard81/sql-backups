@@ -31,22 +31,6 @@
                 @enderror
               </div>
             </div>
-            <div class="flex flex-wrap -mx-3 mb-6">
-              <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" id="db_username" for="db_username">DB Username</label>
-                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white" name="db_username" value="{{ $dbinfo->db_username }}" id="db_username" type="text" placeholder="dbuser">
-                @error('db_username')
-                  <p class="text-red-500 text-xs italic">{{ $message }}</p>
-                @enderror
-              </div>
-              <div class="w-full md:w-1/2 px-3">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" id="db_password" for="db_password">DB Password</label>
-                <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="db_password" value="{{ $dbinfo->db_password }}" id="db_password" type="text" placeholder="password@1">
-                @error('db_password')
-                  <p class="text-red-500 text-xs italic">{{ $message }}</p>
-                @enderror
-              </div>
-            </div>
             <div class="flex flex-wrap -mx-3 mb-2">
               <div class="w-full md:w-1/2 px-3">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" id="db_port" for="db_port">DB Port</label>

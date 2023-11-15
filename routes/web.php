@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DbinfoController;
+use App\Http\Controllers\MysqlController;
 use App\Models\Dbinfo;
 use Illuminate\Http\Request;
 
@@ -31,11 +32,10 @@ Route::middleware([
         return view('dashboard', ['dbs' => $dbs]);
     })->name('dashboard');
 
-    Route::get('/backups/{id}', function (Request $request) {
-        $dbid = $request->id;
-        $dbs = Dbinfo::find($dbid);
-        return view('backups', ['dbs' => $dbs]);
-    })->name('backups');
+    Route::controller(MysqlController::class)->group(function () {
+        Route::get('/backups/{id}', 'index')->name('backups');
+        Route::post('/backups/create', 'create')->name('backups.create');
+    });
 
     Route::resource('dbinfo', DbinfoController::class);
 });

@@ -1,1 +1,1 @@
-<img class="w-1/2 rounded-lg" src="/storage/images/vaimo-logo.png" alt="vaimo logo">
+<img class="w-1/4 rounded-lg" src="/storage/images/vaimo-logo.png" alt="vaimo logo">

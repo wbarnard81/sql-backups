@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-      {{ __('DB Info') }}
+      {{ __('DB Servers') }}
     </h2>
   </x-slot>
 
@@ -23,8 +23,6 @@
                 <tr>
                   <th scope="col" class="px-6 py-3">DB Name</th>
                   <th scope="col" class="px-6 py-3">DB IP Address</th>
-                  <th scope="col" class="px-6 py-3">DB Username</th>
-                  <th scope="col" class="px-6 py-3">DB Password</th>
                   <th scope="col" class="px-6 py-3">DB Port</th>
                   <th scope="col" class="px-6 py-3">DB Cluster</th>
                   <th scope="col" class="px-6 py-3">Action</th>
@@ -35,8 +33,6 @@
                   <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
                     <td class="px-6 py-4">{{ $db->db_name }}</td>
                     <td class="px-6 py-4">{{ $db->db_host }}</td>
-                    <td class="px-6 py-4">{{ $db->db_username }}</td>
-                    <td class="px-6 py-4">{{ $db->db_password }}</td>
                     <td class="px-6 py-4">{{ $db->db_port }}</td>
                     <td class="px-6 py-4">{{ $db->db_cluster }}</td>
                     <td class="px-6 py-4 flex">

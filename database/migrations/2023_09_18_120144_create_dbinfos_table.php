@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('db_name');
             $table->string('db_host');
-            $table->string('db_username');
-            $table->string('db_password');
             $table->string('db_port');
             $table->string('db_cluster');
             $table->timestamps();

@@ -32,8 +32,6 @@ class DbinfoController extends Controller
         $request->validate([
             'db_name' => 'required|min:6',
             'db_host' => 'required|ipv4',
-            'db_username' => 'required|min:6',
-            'db_password' => 'required|min:6',
             'db_port' => 'required|min:4|max:5',
             'db_cluster' => 'required',
         ]);
@@ -70,8 +68,6 @@ class DbinfoController extends Controller
         $request->validate([
             'db_name' => 'required|min:6',
             'db_host' => 'required|ipv4',
-            'db_username' => 'required|min:6',
-            'db_password' => 'required|min:6',
             'db_port' => 'required|min:4|max:5',
             'db_cluster' => 'required',
         ]);
